@@ -1,16 +1,13 @@
 {
   "iconDefinitions": {
     "kosl": {
-      "iconPath": "./kosl-icon.svg"
+      "iconPath": "./krait-icon.svg"
     }
   },
   "fileExtensions": {
-    "kosl": "kosl"
-  },
-  "fileNames": {
-    "Cargo.kosl": "kosl"
+    "kr": "kr"
   },
   "languageIds": {
-    "kosl": "kosl"
+    "krait": "krait"
   }
 }
