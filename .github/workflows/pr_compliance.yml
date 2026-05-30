@@ -1,0 +1,93 @@
+name: Enforce PR Template
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+
+permissions:
+  contents: read
+
+jobs:
+  validate-template:
+    name: Validate Pull Request Template
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate PR Body
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+
+        run: |
+          echo "Validating PR template..."
+
+          # --------------------------------------------------
+          # Reject empty PR body
+          # --------------------------------------------------
+
+          if [[ -z "${PR_BODY//[[:space:]]/}" ]]; then
+            echo "::error title=Empty PR Body::Please fill out the pull request template."
+            exit 1
+          fi
+
+          # --------------------------------------------------
+          # Ensure at least one change type checkbox is checked
+          # --------------------------------------------------
+
+          if ! echo "$PR_BODY" | grep -Eq "\- \[[xX]\]"; then
+            echo "::error title=No Checklist Selected::Please check at least one item under 'Type of Change'."
+            exit 1
+          fi
+
+          # --------------------------------------------------
+          # Ensure Summary section is filled
+          # --------------------------------------------------
+
+          SUMMARY=$(echo "$PR_BODY" | awk '
+            /## Summary/ {flag=1; next}
+            /## Type of Change/ {flag=0}
+            flag
+          ' | tr -d '\r')
+
+          SUMMARY_CLEAN=$(echo "$SUMMARY" \
+            | sed '/^[[:space:]]*$/d' \
+            | tr -d '[:space:]')
+
+          if [[ ${#SUMMARY_CLEAN} -lt 15 ]]; then
+            echo "::error title=Missing Summary::Please provide a meaningful summary of your pull request."
+            exit 1
+          fi
+
+          # --------------------------------------------------
+          # Ensure Changes section is not empty
+          # --------------------------------------------------
+
+          CHANGES=$(echo "$PR_BODY" | awk '
+            /## Changes/ {flag=1; next}
+            /## Testing/ {flag=0}
+            flag
+          ' | tr -d '\r')
+
+          if ! echo "$CHANGES" | grep -Eq "^- .+"; then
+            echo "::error title=Missing Changes::Please list at least one change under the 'Changes' section."
+            exit 1
+          fi
+
+          # --------------------------------------------------
+          # Ensure at least one testing checkbox is checked
+          # --------------------------------------------------
+
+          TESTING=$(echo "$PR_BODY" | awk '
+            /## Testing/ {flag=1; next}
+            /## Screenshots/ {flag=0}
+            flag
+          ' | tr -d '\r')
+
+          if ! echo "$TESTING" | grep -Eq "\- \[[xX]\]"; then
+            echo "::error title=Testing Not Completed::Please check at least one item under the 'Testing' section."
+            exit 1
+          fi
+
+          echo "✅ Pull request template validation passed."

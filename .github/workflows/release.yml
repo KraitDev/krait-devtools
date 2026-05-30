@@ -1,0 +1,39 @@
+name: Release KOSL VSIX
+
+on:
+  push:
+    tags:
+      - 'v*'
+      
+permissions:
+  contents: write
+
+jobs:
+  build-vscode-extension:
+    name: Build VS Code Extension
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        working-directory: ./
+        run: npm install --no-fund --no-audit
+
+      - name: Package Extension (VSIX)
+        working-directory: ./
+        run: npx @vscode/vsce package --out kosl-devtools.vsix
+
+      - name: Upload VS Code Extension
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./kosl-devtools.vsix
+          asset_name: kosl-devtools.vsix
+          tag: ${{ github.ref }}
+          overwrite: true

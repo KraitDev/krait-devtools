@@ -1,0 +1,84 @@
+{
+  "name": "kosl-devtools",
+  "displayName": "KOSL DevTools",
+  "description": "Syntax highlighting, formatting, transpilation, and tooling for Krait Object Serialization Language (KOSL)",
+  "version": "0.3.0",
+  "preview": false,
+  "publisher": "KraitDev",
+  "license": "MIT",
+  "icon": "assets/kosl-svg.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KraitDev/kosl"
+  },
+  "homepage": "https://github.com/KraitDev/kosl",
+  "bugs": {
+    "url": "https://github.com/KraitDev/kosl/issues"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Other"
+  ],
+  "keywords": [
+    "kosl",
+    "krait",
+    "serialization",
+    "config",
+    "configuration",
+    "language"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "kosl",
+        "aliases": [
+          "KOSL",
+          "kosl"
+        ],
+        "extensions": [
+          ".kosl"
+        ],
+        "filenames": [
+          "Cargo.kosl"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./assets/kosl-icon.svg",
+          "dark": "./assets/kosl-icon.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "kosl",
+        "scopeName": "source.kosl",
+        "path": "./syntaxes/kosl.tmLanguage.json"
+      }
+    ],
+    "iconThemes": [
+      {
+        "id": "kosl-icons",
+        "label": "KOSL Icons",
+        "path": "./assets/icon-theme.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "kosl",
+        "path": "./snippets/kosl.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "vsce": "^2.15.0"
+  }
+}
