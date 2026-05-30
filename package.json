@@ -1,19 +1,19 @@
 {
-  "name": "kosl-devtools",
-  "displayName": "KOSL DevTools",
-  "description": "Syntax highlighting, formatting, transpilation, and tooling for Krait Object Serialization Language (KOSL)",
-  "version": "0.3.0",
+  "name": "krait-devtools",
+  "displayName": "Krait DevTools",
+  "description": "Syntax highlighting, formatting, transpilation, and tooling for the Krait Programming Language",
+  "version": "0.2.0",
   "preview": false,
   "publisher": "KraitDev",
   "license": "MIT",
   "icon": "assets/kosl-svg.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/KraitDev/kosl"
+    "url": "https://github.com/KraitDev/krait"
   },
-  "homepage": "https://github.com/KraitDev/kosl",
+  "homepage": "https://github.com/KraitDev/krait",
   "bugs": {
-    "url": "https://github.com/KraitDev/kosl/issues"
+    "url": "https://github.com/KraitDev/krait/issues"
   },
   "engines": {
     "vscode": "^1.80.0"
@@ -24,52 +24,46 @@
     "Other"
   ],
   "keywords": [
-    "kosl",
     "krait",
-    "serialization",
-    "config",
-    "configuration",
+    "complier",
     "language"
   ],
   "contributes": {
     "languages": [
       {
-        "id": "kosl",
+        "id": "kr",
         "aliases": [
-          "KOSL",
-          "kosl"
+          "Krait",
+          "kr"
         ],
         "extensions": [
-          ".kosl"
-        ],
-        "filenames": [
-          "Cargo.kosl"
+          ".kr"
         ],
         "configuration": "./language-configuration.json",
         "icon": {
-          "light": "./assets/kosl-icon.svg",
-          "dark": "./assets/kosl-icon.svg"
+          "light": "./assets/krait-icon.svg",
+          "dark": "./assets/krait-icon.svg"
         }
       }
     ],
     "grammars": [
       {
-        "language": "kosl",
-        "scopeName": "source.kosl",
-        "path": "./syntaxes/kosl.tmLanguage.json"
+        "language": "kr",
+        "scopeName": "source.kr",
+        "path": "./syntaxes/krait.tmLanguage.json"
       }
     ],
     "iconThemes": [
       {
-        "id": "kosl-icons",
-        "label": "KOSL Icons",
+        "id": "krait-icons",
+        "label": "Krait Icons",
         "path": "./assets/icon-theme.json"
       }
     ],
     "snippets": [
       {
-        "language": "kosl",
-        "path": "./snippets/kosl.json"
+        "language": "kr",
+        "path": "./snippets/krait.json"
       }
     ]
   },
