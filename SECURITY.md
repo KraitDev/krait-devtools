@@ -4,8 +4,8 @@
 
 | Version | Supported |
 | ------- | --------- |
-| 0.3.x   | Yes ✅   |
-| < 0.2.x | No ❌    |
+| 0.2.x   | Yes ✅   |
+| < 0.1.x | No ❌    |
 
 ## Reporting a Vulnerability
 
@@ -25,13 +25,12 @@ Include:
 
 ## Scope
 
-This repository contains the Visual Studio Code extension for KOSL.
+This repository contains the Visual Studio Code extension for Krait.
 
 Security-sensitive areas include:
 
 * parsing logic
 * formatter behavior
-* TOML transpilation
 * workspace file access
 * extension command execution
 
@@ -48,7 +47,7 @@ The extension aims to:
 
 ## Parsing Security
 
-KOSL tooling should:
+Krait tooling should:
 
 * reject malformed syntax safely
 * avoid recursive parser overflows
