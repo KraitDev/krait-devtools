@@ -1,0 +1,150 @@
+{
+  "name": "Krait",
+  "scopeName": "source.krait",
+
+  "fileTypes": [
+    "kr"
+  ],
+
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#keywords" },
+    { "include": "#strings" },
+    { "include": "#booleans" },
+    { "include": "#numbers" },
+    { "include": "#functions" },
+    { "include": "#structs" },
+    { "include": "#imports" },
+    { "include": "#calls" },
+    { "include": "#properties" },
+    { "include": "#operators" }
+  ],
+
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "match": "#.*$",
+          "name": "comment.line.number-sign.krait"
+        }
+      ]
+    },
+
+    "keywords": {
+      "patterns": [
+        {
+          "match": "\\b(make|set|when|repeat|return|extern|import|new|show|times)\\b",
+          "name": "keyword.control.krait"
+        }
+      ]
+    },
+
+    "strings": {
+      "patterns": [
+        {
+          "begin": "\"",
+          "end": "\"",
+          "name": "string.quoted.double.krait",
+          "patterns": [
+            {
+              "match": "\\\\.",
+              "name": "constant.character.escape.krait"
+            }
+          ]
+        }
+      ]
+    },
+
+    "booleans": {
+      "patterns": [
+        {
+          "match": "\\b(true|false)\\b",
+          "name": "constant.language.boolean.krait"
+        }
+      ]
+    },
+
+    "numbers": {
+      "patterns": [
+        {
+          "match": "\\b-?\\d+\\.\\d+\\b",
+          "name": "constant.numeric.float.krait"
+        },
+        {
+          "match": "\\b-?\\d+\\b",
+          "name": "constant.numeric.integer.krait"
+        }
+      ]
+    },
+
+    "functions": {
+      "patterns": [
+        {
+          "match": "(?<=\\bmake\\s)([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.krait"
+            }
+          }
+        }
+      ]
+    },
+
+    "structs": {
+      "patterns": [
+        {
+          "match": "(?<=\\bmake\\s)([A-Z][A-Za-z0-9_]*)\\b",
+          "captures": {
+            "1": {
+              "name": "entity.name.type.struct.krait"
+            }
+          }
+        }
+      ]
+    },
+
+    "imports": {
+      "patterns": [
+        {
+          "match": "(?<=\\bimport\\s)([A-Za-z_][A-Za-z0-9_]*)",
+          "captures": {
+            "1": {
+              "name": "entity.name.module.krait"
+            }
+          }
+        }
+      ]
+    },
+
+    "calls": {
+      "patterns": [
+        {
+          "match": "\\b([a-z_][A-Za-z0-9_]*)\\s*(?=\\()",
+          "captures": {
+            "1": {
+              "name": "support.function.call.krait"
+            }
+          }
+        }
+      ]
+    },
+
+    "properties": {
+      "patterns": [
+        {
+          "match": "\\.[A-Za-z_][A-Za-z0-9_]*",
+          "name": "variable.other.member.krait"
+        }
+      ]
+    },
+
+    "operators": {
+      "patterns": [
+        {
+          "match": "(=|\\+|-|\\*|/|<|>|<=|>=|==|!=)",
+          "name": "keyword.operator.krait"
+        }
+      ]
+    }
+  }
+}
