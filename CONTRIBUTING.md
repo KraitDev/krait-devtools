@@ -1,13 +1,12 @@
-# Contributing to the KOSL DevTools
+# Contributing to the Krait DevTools
 
-Welcome and thanks for showing interest contributing to the KOSL DevTools.
+Welcome and thanks for showing interest contributing to the Krait DevTools.
 
-This repository contains the Visual Studio Code extension for Krait Object Serialization Language (KOSL), including:
+This repository contains the Visual Studio Code extension for the Krait Programming Language, including:
 
 * syntax highlighting
 * formatting integration
 * file icons
-* language configuration
 * snippets
 * diagnostics tooling
 
@@ -22,8 +21,8 @@ Requirements:
 Clone the repository:
 
 ```bash
-git clone https://github.com/KraitDev/kosl-devtools.git
-cd kosl-devtools
+git clone https://github.com/KraitDev/krait-devtools.git
+cd krait-devtools
 ```
 
 Install dependencies:
@@ -71,7 +70,6 @@ Before opening a pull request:
 * Test syntax highlighting
 * Test file icon behavior
 * Verify no broken scopes exist
-* Verify `Cargo.kosl` support still works
 
 Recommended checks:
 
@@ -86,7 +84,7 @@ npm run test
 When editing:
 
 ```text
-syntaxes/kosl.tmLanguage.json
+syntaxes/krait.tmLanguage.json
 ```
 
 ensure:
@@ -123,19 +121,8 @@ Please include:
 * VS Code version
 * extension version
 * operating system
-* sample `.kosl` file
+* sample `.kr` file
 * screenshots if highlighting/icons are incorrect
-
-## Roadmap
-
-Planned:
-
-* semantic highlighting
-* LSP integration
-* formatter improvements
-* TOML transpiler integration
-* parser diagnostics
-* AST visualization
 
 ## License
 
