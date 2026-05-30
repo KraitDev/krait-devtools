@@ -1,6 +1,6 @@
 <div align="center">
 
-<img height="120" alt="kosl vscode" src="https://github.com/user-attachments/assets/d11df6a4-d27f-4bd0-ace6-8e183eb81d5a" />
+<img height="120" alt="kosl vscode (1)" src="https://github.com/user-attachments/assets/551420a3-1b2f-46db-96da-2716bcb02e58" />
 
 **The official Visual Studio Code extension for the Krait Programming Language.**
 
